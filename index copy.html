@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@22,44.4&display=swap');
+
+        .h1_title {
+            font-family: "Honk", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings:
+                "MORF" 22,
+                "SHLN" 44.4;
+        }
+
+        .h1_title {
+            text-align: center;
+            font-size: 150px;
+        }
+
+        body {
+            background-image: url('https://i.namu.wiki/i/wo6aBTgVf6_USX60LKE-YTrGjnWqDye9hBkIWmaRYB7SSABeXpP-xKHZoCNPIEauic3mC_LyxVm9a16y5XwC4w.webp');
+            background-size: 550px 300px;
+            background-position: center 35px;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 192, 203, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+
+        .Companion {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .main_text_container {
+            border: 3px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main_text {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .nav-link {
+            color: black !important;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .card {
+            text-align: center;
+        }
+
+        .mycards {
+            width: 1200px;
+            margin: 20px auto 20px auto;
+            margin-top: 50px;
+        }
+
+        #card {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card-text {
+            text-align: left;
+            font-weight: bold;
+            background-color: floralwhite;
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            border-radius: 0;
+            display: block;
+        }
+
+        .h1_title2 {
+            text-align: center;
+        }
+
+        .Companion2 {
+            text-align: center;
+            display: flex;
+            /* 플렉스 박스 사용 */
+            justify-content: center;
+            /* 가운데 정렬 */
+            flex-wrap: wrap;
+            /* 이미지들이 줄 바꿈 가능하도록 설정 */
+            gap: 10px;
+            /* 이미지 간 간격 */
+            margin: 20px;
+            /* 외부 여백 */
+        }
+
+
+        .Companion2 img {
+            border-radius: 100px;
+        }
+
+        .h1_title3 {
+            text-align: center;
+            margin-left: 68px;
+            font-size: 30px;
+            color: black;
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        #up_scroll {
+            position: fixed;
+            bottom: 20px;
+            /* 화면 아래쪽 여백 */
+            right: 20px;
+            /* 화면 오른쪽 여백 */
+            z-index: 1000;
+            /* 다른 요소 위에 배치 */
+        }
+
+        #kuribo {
+            border: none;
+            /* 버튼 기본 테두리 제거 */
+            background: transparent;
+            /* 배경 제거 */
+            padding: 0;
+            /* 버튼 내부 여백 제거 */
+            cursor: pointer;
+            /* 클릭 가능한 요소로 변경 */
+        }
+
+        #kuribo img {
+            width: 50px;
+            /* 이미지 크기 조절 */
+            height: 50px;
+            border-radius: 100px;
+        }
+
+        .deck_posting_box {
+            width: 500px;
+            margin: 20px auto 20px auto;
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgb(200, 245, 200);
+        }
+
+        .excard {
+            display: flex;
+            justify-content: center;
+            /* 중앙 정렬 */
+            align-items: center;
+            flex-wrap: wrap;
+            /* 여러 줄일 경우 줄바꿈 */
+            margin-top: 30px;
+            /* 상단 여백 */
+            padding: 20px;
+        }
+
+        .card-title {
+            text-align: center;
+            /* 카드 제목 중앙 정렬 */
+            font-weight: bold;
+        }
+
+        .card-text2 {
+            text-align: center;
+            /* 카드 설명 중앙 정렬 */
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .row.g-0 {
+            display: flex;
+            flex-direction: row;
+            /* 가로 정렬 */
+            justify-content: center;
+            /* 중앙 정렬 */
+            align-items: center;
+            border: 2px solid black;
+            /* 검정색 테두리 */
+            border-radius: 10px;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 20px;
+            /* 카드 아래 간격 추가 */
+            width: 400px;
+            /* 카드 크기 조정 */
+        }
+    </style>
+
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#kuribo').fadeIn();
+            } else {
+                $('#kuribo').fadeOut();
+            }
+        });
+
+        $(document).ready(function () {
+            $('#kuribo').click(function () {
+                $("html, body").animate({ scrollTop: 0 }, "fast");
+            });
+        });
+
+        $(document).ready(function () {
+            $('.nav-link').click(function () {
+                let target = 0;
+
+                switch ($(this).attr("id")) {
+                    case "c_1":
+                        target = 0
+                        break;
+                    case "c_2":
+                        target = 1000
+                        break;
+                    case "c_3":
+                        target = 4000
+                        break;
+                    case "c_4":
+                        target = 2000
+                        break;
+                }
+
+                $("html, body").animate({ scrollTop: target }, "fast");
+            });
+        });
+
+        $(document).ready(function () {
+            $('#deck_button').click(function () {
+                let deckImage = $('#deck_image').val();
+                let deckTitle = $('#deck_title').val();
+                let deckTier = $('#deck_tier').val();
+                let deckComment = $('#deck_comment').val();
+
+                let deck_data = {
+                    deckImage,
+                    deckTitle,
+                    deckTier,
+                    deckComment
+                };
+
+                if (deckImage === '' || deckTitle === '' || deckTier === '몇 티어인지 고르시오.' || deckComment === '') {
+                    alert('모든 항목을 채워주세요.');
+                } else {
+                    alert('작성이 완료되었습니다.');
+                }
+            });
+        });
+
+        function makeCard() {
+            let image = $('#image').val();
+            let title = $('#title').val();
+            let comment = $('#comment').val();
+            let star = $('#star').val();
+            
+            let temp_html = `           
+            <div class="col">
+                <div class="card">
+                    <img src="${image}"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <p class="card-text">${star}</p>
+                        <p class="card-text">${comment}</p>
+                    </div>
+                </div>
+            </div>`;
+            $('#card').append(temp_html);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="title">
+        <h1 class="h1_title">TTFG</h1>
+    </div>
+
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link" id="c_1">INTRO</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="c_2">TTFG</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="c_3">멤버 소개</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="c_4">방명록</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <div class="Companion">
+        <a href="https://www.masterduelmeta.com/top-decks/master-i/february-2025/spright/typicalarsenal/tXnm3"
+            target="_blank">
+            <img src="https://mblogthumb-phinf.pstatic.net/MjAyMjA0MzBfNDcg/MDAxNjUxMzA1NDQ4MTcy.TyhrGQn2Kg3Go_x7cLcK7lbjefEa6cO1d-vCR97MNo0g.xINUU6J5Gh5Mrto_K8kIhL7csEYhMGyr-08JPnCYew4g.PNG.whwjdgnsqe/SE-858fa3cf-b51f-4b4b-b732-8b9289054911.png?type=w800"
+                width="300" height="300" alt="image1" />
+        </a>
+        <a href="https://www.masterduelmeta.com/tier-list/deck-types/Tearlaments" target="_blank">
+            <img src="https://i.namu.wiki/i/KTOY0ckQZEBACVXXdhh3qfGmmh_W2M7fi_7EP4b48TnicOjdF5eYKNi-ngFQskDzIPsplfdR1lsR6JCCQHgelA.webp"
+                width="300" height="300" alt="image2" />
+        </a>
+        <a href="https://www.masterduelmeta.com/top-decks/master-v/february-2025/kashtira/tiptoe/j96dM" target="_blank">
+            <img src="https://i.namu.wiki/i/sKtolikMwqFkqQGZlA2QsIMP5X0LFM8T7fovcKfyF7IadLdjt-s_yMrO4r-GrxUWRy9E09NtirtHTCumal7UdA.webp"
+                width="300" height="300" alt="image3" />
+        </a>
+        <a href="https://www.masterduelmeta.com/top-decks/master-i/february-2025/branded/zaynejim/tNRAu"
+            target="_blank">
+            <img src="https://i.namu.wiki/i/OjObVr7sGsPIJcKxusGZdkxNClnh8ASp9jh0BOg7TJZK6gakCzr7POWKL6UTiekz_JJXeBBAVDOkjNBxDpNZYw.webp"
+                width="300" height="300" alt="image4" />
+        </a>
+    </div>
+
+    <div class="main_text_container">
+        <div class="main_text">
+            안녕하세요.
+        </div>
+        <div class="main_text">
+            저희는 유희왕이라는 게임을 망가트린 주범 4명입니다.
+        </div>
+        <div class="main_text">
+            모두 종족도 다르고 속성도 다르지만 게임을 망가트리고자 의기투합하여 한 마음 한 뜻으로 똘똘 뭉쳤습니다ㅎㅎ
+        </div>
+    </div>
+
+    <div class="mycards">
+        <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="card border-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">TMI/우리팀의 특징</h5>
+                    <p class="card-text">✓Git 스프라이트 => 2레벨 제약의 악마</p>
+                    <p class="card-text">✓Git 티아라멘츠 => 흉악한 덱융합의 악마</p>
+                    <p class="card-text">✓Git 크샤트리라 => 제외 가불기 시전하는 악마</p>
+                    <p class="card-text">✓Git 낙인 => 딸깍의 악마</p>
+                </div>
+            </div>
+
+            <div class="card border-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">궁극적인 목표</h5>
+                    <p class="card-text">✓Git 사용법 숙지하기</p>
+                    <p class="card-text">✓내일배움캠프 포기하지 않고 끝까지 수료하기!</p>
+                    <p class="card-text">✓프론트와 백의 연결관계 이해하기</p>
+                    <p class="card-text">✓Git POST, GET 사용법 마스터하기</p>
+                    <p class="card-text">✓ch1 미니 project 구조 정확히 이해하고 만들기</p>
+                </div>
+            </div>
+
+            <div class="card border-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">우리팀의 규칙</h5>
+                    <p class="card-text">✓건강이 제일 중요! 밥 세끼 꼬박꼬박 잘 챙겨먹기</p>
+                    <p class="card-text">✓막히는 부분이 있다면 혼자 머리싸매지 말고 팀원과 같이 해결!</p>
+                    <p class="card-text">✓13-14시 점심 시간, 18-19시 저녁 시간</p>
+                    <p class="card-text">✓20시 Git Merge 후 팀원들과 함께 코드리뷰, 상세 피드백하기</p>
+                    <p class="card-text">✓20시 40분 개발 일지(TIL) 작성하고 퇴실시간 맞춰 퇴실하기기</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="title2">
+        <h1 class="h1_title2">CARDS</h1>
+    </div>
+
+    <div class="Companion2">
+        <div id="card" class="row row-cols-1 row-cols-md-5 g-5">
+            <a href="https://www.masterduelmeta.com/top-decks/master-i/february-2025/spright/typicalarsenal/tXnm3"
+                target="_blank">
+                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMjA0MzBfNDcg/MDAxNjUxMzA1NDQ4MTcy.TyhrGQn2Kg3Go_x7cLcK7lbjefEa6cO1d-vCR97MNo0g.xINUU6J5Gh5Mrto_K8kIhL7csEYhMGyr-08JPnCYew4g.PNG.whwjdgnsqe/SE-858fa3cf-b51f-4b4b-b732-8b9289054911.png?type=w800"
+                    width="300" height="300" alt="image1" />
+                <h1 class="h1_title3">스프라이트</h1>
+            </a>
+            <a href="https://www.masterduelmeta.com/tier-list/deck-types/Tearlaments" target="_blank">
+                <img src="https://i.namu.wiki/i/KTOY0ckQZEBACVXXdhh3qfGmmh_W2M7fi_7EP4b48TnicOjdF5eYKNi-ngFQskDzIPsplfdR1lsR6JCCQHgelA.webp"
+                    width="300" height="300" alt="image2" />
+                <h1 class="h1_title3">티아라멘츠
+                </h1>
+            </a>
+            <a href="https://www.masterduelmeta.com/top-decks/master-v/february-2025/kashtira/tiptoe/j96dM"
+                target="_blank">
+                <img src="https://i.namu.wiki/i/sKtolikMwqFkqQGZlA2QsIMP5X0LFM8T7fovcKfyF7IadLdjt-s_yMrO4r-GrxUWRy9E09NtirtHTCumal7UdA.webp"
+                    width="300" height="300" alt="image3" />
+                <h1 class="h1_title3">크샤트리라</h1>
+            </a>
+            <a href="https://www.masterduelmeta.com/top-decks/master-i/february-2025/branded/zaynejim/tNRAu"
+                target="_blank">
+                <img src="https://i.namu.wiki/i/OjObVr7sGsPIJcKxusGZdkxNClnh8ASp9jh0BOg7TJZK6gakCzr7POWKL6UTiekz_JJXeBBAVDOkjNBxDpNZYw.webp"
+                    width="300" height="300" alt="image4" />
+                <h1 class="h1_title3">비스테드</h1>
+            </a>
+        </div>
+    </div>
+
+    <div class="btn-text-right" id="up_scroll">
+        <button type="button" id="kuribo">
+            <img src="https://i.namu.wiki/i/Tl7Yfpgygwt76fmenSUGkohcFO8rOzgSLz-Jheu1M5Hma4F9X7wTIQM_aKExBp8y6T63kdFduROITsPaE3vMsw.webp"
+                alt="kuribo">
+        </button>
+    </div>
+
+    <div class="deck_posting_box" id="i_deck_posting_box">
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="deck_image" placeholder="덱 이미지">
+            <label for="floatingInput">덱 이미지</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="deck_title" placeholder="덱 이름">
+            <label for="floatingInput">덱 이름</label>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">티어</label>
+            <select class="form-select" id="deck_tier">
+                <option selected="">몇 티어인지 고르시오.</option>
+                <option value="1Tier">1Tier</option>
+                <option value="2Tier">2Tier</option>
+                <option value="3Tier">3Tier</option>
+                <option value="4Tier">4Tier</option>
+                <option value="그외">그외</option>
+            </select>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="deck_comment" placeholder="코멘트">
+            <label for="floatingInput">덱 설명</label>
+        </div>
+
+        <button id="deck_button" type="button" class="btn btn-danger">기록하기</button>
+    </div>
+
+    <div class="mycards">
+        <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">영화 제목</h5>
+                        <p class="card-text">⭐⭐⭐</p>
+                        <p class="card-text">영화 코멘트</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
